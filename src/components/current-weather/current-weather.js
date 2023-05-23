@@ -1,5 +1,5 @@
 // Import
-import "./current-weather.css"
+import './current-weather.css'
 
 // Current-Weateher Component
 const CurrentWeather = () => {
@@ -9,7 +9,7 @@ const CurrentWeather = () => {
                 <p className="city">Belgrade</p>
                 <p className="weather-description">Sunny</p>
             </div>
-            <img className="weather" src="" alt="weather" />
+            <img className="weather-icon" src="icons/01d.png" alt="weather" />
         </div>
     );
 }
