@@ -8,6 +8,10 @@ import { WEATHER_API_URL, WEATHER_API_KEY } from './api';
 
 function App() {
 
+  // Use States
+  const [current, weather, setCurrentWeather] = useState[null];
+  const [forecast, setForecast] = useState[null]
+
   // Handle On Search Change
   const handleOnSearchChange = (searchData) => {
     // console.log(searchData)
@@ -23,6 +27,9 @@ function App() {
       .then(async (response) => {
       const weatherResponse = await response[0].json();
       const forecastResponse = await response[1].json();
+
+      setCurrentWeather(weatherResponse);
+      setForecast(forecastResponse);
     })
 
 }
