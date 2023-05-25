@@ -10,8 +10,8 @@ import { useState } from 'react';
 function App() {
 
   // Use States
-  const [currentWeather, setCurrentWeather] = useState[null];
-  const [forecast, setForecast] = useState[null];
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
 
   // Handle On Search Change
   const handleOnSearchChange = (searchData) => {
@@ -29,11 +29,16 @@ function App() {
         const weatherResponse = await response[0].json();
         const forecastResponse = await response[1].json();
 
-        setCurrentWeather(weatherResponse);
-        setForecast(forecastResponse);
+        setCurrentWeather({ city: searchData.label, ...weatherResponse });
+        setForecast({ city: searchData.label, ...forecastResponse });
       })
+      .catch((err) => console.log(err));
 
   }
+
+  console.log(currentWeather)
+  console.log(forecast)
+
 
   return (
     <div className="search-container">
