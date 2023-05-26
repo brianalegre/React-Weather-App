@@ -19,20 +19,21 @@ function App() {
     const [lat, lon] = searchData.value.split(" ");
 
     // API Call
-    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`);
+    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
     // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-    const forecastFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`);
+    const forecastFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
 
     // Promise
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
+        console.log(response)
         const weatherResponse = await response[0].json();
         const forecastResponse = await response[1].json();
 
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
         setForecast({ city: searchData.label, ...forecastResponse });
       })
-      .catch((err) => console.log(err));
+      .catch(console.log);
 
   }
 
@@ -45,7 +46,7 @@ function App() {
       {/* Search Component */}
       <Search onSearchChange={handleOnSearchChange} />
       {/* Current-Weather Component */}
-      <CurrentWeather />
+      {currentWeather && <CurrentWeather data={currentWeather} />}
     </div>
   )
 }
