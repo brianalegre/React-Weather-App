@@ -19,9 +19,9 @@ function App() {
     const [lat, lon] = searchData.value.split(" ");
 
     // API Call
-    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&${lon}&appid=${WEATHER_API_KEY}`);
+    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`);
     // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-    const forecastFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&${lon}&appid=${WEATHER_API_KEY}`);
+    const forecastFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`);
 
     // Promise
     Promise.all([currentWeatherFetch, forecastFetch])
