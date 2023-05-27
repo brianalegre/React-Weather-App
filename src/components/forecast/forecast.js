@@ -27,22 +27,23 @@ const Forecast = ({ data }) => {
                     <AccordionItem key={idx}>
                         <AccordionItemHeading>
                             <AccordionItemButton>
-                                <div className="daily-item"></div>
-                                <img className="icon-small" src={`icons/${item.weather[0].icon}.png`} alt="weather" />
-                                <label className="day">{forecastDays[idx]}</label>
-                                <label className="description">{item.weather[0].description}</label>
-                                <label className="min-max">{Math.round(item.main.temp_min)}°C / {Math.round(item.main.temp_max)}°C </label>
+                                <div className="daily-item">
+                                    <img className="icon-small" src={`icons/${item.weather[0].icon}.png`} alt="weather" />
+                                    <label className="day">{forecastDays[idx]}</label>
+                                    <label className="description">{item.weather[0].description}</label>
+                                    <label className="min-max">{Math.round(item.main.temp_max)}°C / {Math.round(item.main.temp_min)}°C </label>
+                                </div>
                             </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
                             <div className="daily-details-grid">
                                 <div className="daily-details-grid-item">
-                                    <label>Pressure</label>
-                                    <label>{item.name.pressure}hPa</label>
+                                    <label>Pressure:</label>
+                                    <label>{item.main.pressure}hPa</label>
                                 </div>
                                 <div className="daily-details-grid-item">
                                     <label>Humidity</label>
-                                    <label>{item.name.humidity}%</label>
+                                    <label>{item.main.humidity}%</label>
                                 </div>
                                 <div className="daily-details-grid-item">
                                     <label>Clouds</label>
@@ -58,7 +59,7 @@ const Forecast = ({ data }) => {
                                 </div>
                                 <div className="daily-details-grid-item">
                                     <label>Feels Like:</label>
-                                    <label>{Math.round(item.main.feels_like)}°C</label>
+                                    <label>{item.main.feels_like}°C</label>
                                 </div>
                             </div>
                         </AccordionItemPanel>
@@ -74,4 +75,4 @@ const Forecast = ({ data }) => {
 
 
 // Export Component
-export default Forecast
+export default Forecast;

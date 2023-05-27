@@ -22,7 +22,7 @@ function App() {
     // API Call
     const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
     // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-    const forecastFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
+    const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
 
     // Promise
     Promise.all([currentWeatherFetch, forecastFetch])
